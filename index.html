@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AML 急性骨髓性白血病 — NCCN v5.2026 臨床速查手冊</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --primary: #0f4c81;
+      --primary-light: #e0f0ff;
+      --accent: #0284c7;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --ok-bg: #f0fdf4;
+      --ok-border: #22c55e;
+      --ok-text: #166534;
+      --info-bg: #eff6ff;
+      --info-border: #3b82f6;
+      --info-text: #1e40af;
+      --badge-bg: #e2e8f0;
+      --badge-text: #334155;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+      --radius: 12px;
+      --sidebar-w: 280px;
+      --topbar-h: 64px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --border: #293548;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-light: #0c4a6e;
+      --accent: #0ea5e9;
+      --danger-bg: #2c1215;
+      --danger-border: #f87171;
+      --danger-text: #fca5a5;
+      --warn-bg: #2b200a;
+      --warn-border: #fbbf24;
+      --warn-text: #fde68a;
+      --ok-bg: #0b2619;
+      --ok-border: #4ade80;
+      --ok-text: #86efac;
+      --info-bg: #0f213d;
+      --info-border: #60a5fa;
+      --info-text: #93c5fd;
+      --badge-bg: #1e293b;
+      --badge-text: #cbd5e1;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--topbar-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 20px;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    .brand .ver {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .search-wrap {
+      flex: 1;
+      max-width: 460px;
+      margin-left: auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 8px 36px 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: none;
+      font-size: 15px;
+    }
+    .search-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .theme-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: var(--topbar-h);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 16px 12px 32px;
+      z-index: 90;
+      transition: transform .25s ease;
+    }
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin: 14px 10px 6px;
+    }
+    .nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13.5px;
+      margin-bottom: 2px;
+      transition: background .15s, color .15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .nav-code {
+      font-size: 10.5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 1px 6px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Main */
+    .main {
+      margin-left: var(--sidebar-w);
+      margin-top: var(--topbar-h);
+      padding: 28px 32px 80px;
+      max-width: 1140px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f4c81 0%, #0284c7 100%);
+      color: #ffffff;
+      padding: 26px 28px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 24px; line-height: 1.3; }
+    .hero p { margin: 0; opacity: 0.92; font-size: 14px; }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Quick Jump Chips */
+    .quick-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .chip:hover {
+      border-color: var(--accent);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* Sections */
+    section.card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: calc(var(--topbar-h) + 16px);
+    }
+    .sec-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .sec-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--primary);
+    }
+    .sec-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .code-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 20px 0 10px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    ul, ol { margin: 8px 0 14px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+
+    /* Callouts */
+    .callout {
+      border-left: 4px solid;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    .callout-danger { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger-text); }
+    .callout-warn   { background: var(--warn-bg);   border-color: var(--warn-border);   color: var(--warn-text); }
+    .callout-ok     { background: var(--ok-bg);     border-color: var(--ok-border);     color: var(--ok-text); }
+    .callout-info   { background: var(--info-bg);   border-color: var(--info-border);   color: var(--info-text); }
+    .callout strong { display: inline; }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      min-width: 580px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--surface-alt); }
+
+    /* Badges */
+    .cat {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .cat-1 { background: #dcfce7; color: #166534; }
+    .cat-2b { background: #fef3c7; color: #92400e; }
+    .cat-new { background: #dbeafe; color: #1e40af; }
+    [data-theme="dark"] .cat-1 { background: #14532d; color: #86efac; }
+    [data-theme="dark"] .cat-2b { background: #78350f; color: #fde68a; }
+    [data-theme="dark"] .cat-new { background: #1e3a8a; color: #93c5fd; }
+
+    .risk-fav { color: #15803d; font-weight: 700; }
+    .risk-int { color: #b45309; font-weight: 700; }
+    .risk-adv { color: #b91c1c; font-weight: 700; }
+    [data-theme="dark"] .risk-fav { color: #4ade80; }
+    [data-theme="dark"] .risk-int { color: #fbbf24; }
+    [data-theme="dark"] .risk-adv { color: #f87171; }
+
+    /* Flow Grid */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .flow-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13.5px;
+    }
+    .flow-box .step-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    [data-theme="dark"] .tab-btn.active { color: #0b1120; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Search Highlight */
+    mark.hl {
+      background: #fde047;
+      color: #0f172a;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    /* Back to top */
+    .top-btn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      font-weight: 600;
+      display: none;
+      z-index: 80;
+    }
+    [data-theme="dark"] .top-btn { color: #0b1120; }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 85;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 920px) {
+      .menu-btn { display: inline-block; }
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .overlay.open { display: block; }
+      .main { margin-left: 0; padding: 20px 16px 70px; }
+      .brand .ver { display: none; }
+    }
+
+    @media print {
+      .topbar, .sidebar, .quick-bar, .top-btn, .overlay { display: none !important; }
+      .main { margin: 0; padding: 0; max-width: 100%; }
+      section.card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="開啟目錄">☰</button>
+    <div class="brand">
+      <span>🩸 AML 臨床速查手冊</span>
+      <span class="ver">NCCN v5.2026</span>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" class="search-input" placeholder="搜尋基因、藥物、療程或頁碼 (如 FLT3, Venetoclax, APL)..." />
+      <button class="search-clear" id="searchClear" title="清除搜尋">✕</button>
+    </div>
+    <span class="search-count" id="searchCount"></span>
+    <button class="theme-btn" id="themeBtn">🌙 深色</button>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="nav-group-title">總覽與評估</div>
+    <a class="nav-link" href="#sec-updates"><span>一、2026 重大更新</span><span class="nav-code">UPDATES</span></a>
+    <a class="nav-link" href="#sec-eval"><span>二、初步評估與診斷</span><span class="nav-code">EVAL-1/2</span></a>
+    <a class="nav-link" href="#sec-risk"><span>三、風險分層標準</span><span class="nav-code">AML-A/J</span></a>
+
+    <div class="nav-group-title">非 APL AML 治療路徑</div>
+    <a class="nav-link" href="#sec-intensive"><span>四、高強度誘導與鞏固</span><span class="nav-code">AML-1~3,6</span></a>
+    <a class="nav-link" href="#sec-lower"><span>五、低強度與 Venetoclax</span><span class="nav-code">AML-4,5,J</span></a>
+    <a class="nav-link" href="#sec-rr"><span>六、維持、追蹤與 R/R</span><span class="nav-code">AML-7~9</span></a>
+    <a class="nav-link" href="#sec-dosing"><span>七、常用藥物劑量速查</span><span class="nav-code">AML-E</span></a>
+    <a class="nav-link" href="#sec-mrd"><span>八、療效定義與 MRD</span><span class="nav-code">AML-H/I</span></a>
+
+    <div class="nav-group-title">特殊亞型與支持照護</div>
+    <a class="nav-link" href="#sec-apl"><span>九、急性前骨髓細胞白血病</span><span class="nav-code">APL</span></a>
+    <a class="nav-link" href="#sec-bpdcn"><span>十、BPDCN 診療指引</span><span class="nav-code">BPDCN</span></a>
+    <a class="nav-link" href="#sec-support"><span>十一、CNS、支持與無血照護</span><span class="nav-code">AML-B~G</span></a>
+  </aside>
+
+  <main class="main" id="contentRoot">
+    <div class="hero">
+      <h1>急性骨髓性白血病 (AML) NCCN 臨床診療指引速查</h1>
+      <p>整理並翻譯自 NCCN Clinical Practice Guidelines in Oncology: Acute Myeloid Leukemia (Age ≥18 years) Version 5.2026（2026/07/15）</p>
+      <div class="hero-meta">
+        <span class="hero-pill">涵蓋 Non-APL AML / APL / BPDCN</span>
+        <span class="hero-pill">預設證據等級：Category 2A（除非另標註）</span>
+        <span class="hero-pill">支援關鍵字即時高亮搜尋</span>
+      </div>
+    </div>
+
+    <div class="quick-bar">
+      <a class="chip" href="#sec-eval">⚡ 初診急症 (APL / 高白血球)</a>
+      <a class="chip" href="#sec-risk">🧬 ELN 2022 風險分層</a>
+      <a class="chip" href="#sec-intensive">💉 7+3 / CPX-351 / FLT3</a>
+      <a class="chip" href="#sec-lower">💊 HMA + Venetoclax 調藥</a>
+      <a class="chip" href="#sec-rr">🎯 R/R 標靶 (Menin / FLT3 / IDH)</a>
+      <a class="chip" href="#sec-dosing">📋 劑量速查表</a>
+      <a class="chip" href="#sec-apl">🚨 APL 分化症候群 &amp; DIC</a>
+      <a class="chip" href="#sec-bpdcn">🧬 BPDCN CD123 標靶</a>
+    </div>
+
+    <!-- 一、重大更新 -->
+    <section class="card" id="sec-updates">
+      <div class="sec-header">
+        <h2>一、2026 年版本重大更新摘要 (v1.2026 – v5.2026)</h2>
+        <div class="sec-tags"><span class="code-tag">UPDATES</span></div>
+      </div>
+      <ul>
+        <li><strong>v5.2026 (2026/07/15)</strong>：BPDCN 重大改版，新增第二個 FDA 核准的 CD123 標靶 ADC 藥物 <strong>Pivekimab sunirine-pvzy</strong> <span class="cat cat-new">NEW</span>（一線誘導與 R/R），並更新 Tagraxofusp-erzs 納入條件。</li>
+        <li><strong>v4.2026</strong>：不適合或拒絕高強度誘導的新診斷 AML（≥75 歲或共病，不論有無 <em>IDH1</em> 突變），新增全口服療法 <strong>Oral decitabine and cedazuridine (35/100 mg PO D1–5) + venetoclax</strong> <span class="cat cat-new">NEW</span>。</li>
+        <li><strong>v3.2026</strong>：復發/難治型（R/R）<em>NPM1</em> 突變 AML 新增口服 Menin 抑制劑 <strong>Ziftomenib</strong>（600 mg QD）<span class="cat cat-new">NEW</span>，並擴展 <strong>Revumenib</strong> 適應症至 <em>NPM1</em> 突變（原僅限 <em>KMT2A</em> 重排）。</li>
+        <li><strong>v2.2026</strong>：R/R AML 之 <strong>FLAG-IDA + venetoclax</strong> 療程，Venetoclax 天數由 14 天縮短為 <strong>7 天（D1–7）</strong>。</li>
+        <li><strong>v1.2026</strong>：
+          <ul>
+            <li>移除 <code>7 + 3 (mitoxantrone)</code> 與 <code>HiDAC + anthracycline + etoposide</code>；明確指出 <strong>Daunorubicin 60 mg/m² 優於 90 mg/m²</strong>。</li>
+            <li>高風險/繼發性誘導新增 <strong>CLIA + venetoclax</strong>、<strong>FLAG-IDA + venetoclax</strong> <span class="cat cat-2b">Cat 2B</span>；殘留病灶再誘導新增 <strong>HMA + venetoclax</strong>。</li>
+            <li>低強度 <em>IDH1</em> 突變：<code>Decitabine + venetoclax</code> 升格為 Preferred；新增 <strong>Olutasidenib</strong> <span class="cat cat-2b">Cat 2B</span>（適用 QTcF 延長無法用 Ivosidenib 者）。</li>
+            <li>明確建議移植前/後骨髓 <em>FLT3-ITD</em> MRD ≥10⁻⁶（高靈敏度 NGS）者採 <strong>Gilteritinib 移植後維持治療</strong>；Venetoclax 嚴重共病可減量（如 7 天），緩解期血球低下鼓勵 G-CSF 並可縮短 Ven 天數。</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 二、初步評估與診斷 -->
+    <section class="card" id="sec-eval">
+      <div class="sec-header">
+        <h2>二、初步評估與診斷</h2>
+        <div class="sec-tags"><span class="code-tag">EVAL-1</span><span class="code-tag">EVAL-2</span></div>
+      </div>
+
+      <div class="callout callout-danger">
+        <strong>🚨 急症紅線 — 疑似 APL：</strong>凡臨床或形態高度懷疑 APL，<strong>必須立即給予 ATRA</strong>，切勿等待染色體或分子確診，以預防致命性出血！若後續排除 APL，停用 ATRA 改行標準 AML 治療。
+      </div>
+
+      <h3>1. 初診必做檢查清單 (EVAL-1)</h3>
+      <div class="flow-grid">
+        <div class="flow-box">
+          <div class="step-title">🧪 血液與生化凝血</div>
+          CBC/DC/Plt、CMP、尿酸、LDH、Vit B12 &amp; 葉酸（排除營養缺乏偽白血病）、<strong>PT / PTT / Fibrinogen</strong>（任何侵入性檢查前必測）。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🦴 骨髓與基因檢測</div>
+          BM biopsy + aspirate、IHC + Flow、染色體核型、FISH、NGS。<br>
+          <strong>ELN 2022 必測：</strong><em>ASXL1, BCOR, KIT, EZH2, FLT3 (ITD/TKD), NPM1, CEBPA (bZIP), IDH1/2, RUNX1, SF3B1, SRSF2, STAG2, TP53, U2AF1, ZRSR2</em>。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🫀 器官與影像評估</div>
+          心臟超音波/MUGA（有心臟史、預計用心毒性藥或胸放療者；<strong>重症不可因此延誤治療</strong>）；疑腦出血做無顯影 CT；疑腦膜侵犯做 MRI；有神經症狀才做 LP；髓外病灶考慮 PET/CT。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🤝 移植、遺傳與緩和</div>
+          <strong>早期轉介移植中心與 HLA 配對</strong>；&lt;50 歲或有家族史考慮遺傳性易感基因（Germline NGS）；生育保存諮詢；<strong>早期整合安寧緩和醫療</strong>。
+        </div>
+      </div>
+
+      <h3>2. 高白血球血症緊急降細胞與分類系統 (EVAL-2)</h3>
+      <ul>
+        <li><strong>高白血球血症 (Hyperleukocytosis)</strong>：優先以 <strong>Hydroxyurea</strong> 降細胞；若無法控制，等待完整基因報告期間可考慮給予<strong>單次 Cytarabine（0.5–2 g）</strong>。症狀性白血球滯留症可謹慎考慮白血球分離術（實證有限；APL 不常規建議）。</li>
+        <li><strong>WHO 2022 vs. ICC 2022</strong>：WHO 2022 對多數具定義性基因異常 AML 取消芽細胞門檻（保留 <em>BCR::ABL1</em>、<em>CEBPA</em> 及區分 MDS 的 20% 門檻）；ICC 2022 保留 ≥10% 門檻並單列 MDS/AML (10–19%) 及 <em>TP53</em> 突變 AML。NCCN 不偏袒任一系統，建議以最大化臨床試驗參與為原則。</li>
+      </ul>
+    </section>
+
+    <!-- 三、風險分層 -->
+    <section class="card" id="sec-risk">
+      <div class="sec-header">
+        <h2>三、風險分層標準</h2>
+        <div class="sec-tags"><span class="code-tag">AML-A</span><span class="code-tag">AML-J</span></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="tab-eln">ELN 2022（高強度化療適用）</button>
+        <button class="tab-btn" data-tab="tab-ven-risk">HMA + Venetoclax 預後分層</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-eln">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>風險分組</th><th>染色體與分子基因異常</th><th>關鍵臨床判讀規則</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="risk-fav">低風險<br>Favorable</span></td>
+                <td>
+                  • t(8;21)(q22;q22.1) / <em>RUNX1::RUNX1T1</em><br>
+                  • inv(16)(p13.1q22) 或 t(16;16) / <em>CBFB::MYH11</em><br>
+                  • <em>NPM1</em> 突變且<strong>無 <em>FLT3-ITD</em></strong><br>
+                  • <em>CEBPA</em> <strong>bZIP 區域 in-frame 突變</strong>
+                </td>
+                <td>
+                  • 合併 <em>KIT</em> 或 <em>FLT3</em> 突變不改變 CBF-AML 分類。<br>
+                  • <em>CEBPA</em> bZIP in-frame 不論單/雙對偶基因皆屬低風險。<br>
+                  • <em>NPM1</em> 突變若合併高風險染色體異常 → 改列<strong>高風險</strong>。
+                </td>
+              </tr>
+              <tr>
+                <td><span class="risk-int">中風險<br>Intermediate</span></td>
+                <td>
+                  • <em>NPM1</em> 突變合併 <em>FLT3-ITD</em><br>
+                  • 野生型 <em>NPM1</em> 合併 <em>FLT3-ITD</em>（無不良基因異常）<br>
+                  • t(9;11)(p21.3;q23.3) / <em>MLLT3::KMT2A</em><br>
+                  • 其他非低風險亦非高風險之異常
+                </td>
+                <td>
+                  • <strong>不再考量 <em>FLT3-ITD</em> allelic ratio</strong>，有 ITD（無高風險異常）即列中風險。<br>
+                  • t(9;11) 優先於罕見合併的不良基因突變。
+                </td>
+              </tr>
+              <tr>
+                <td><span class="risk-adv">高風險<br>Poor / Adverse</span></td>
+                <td>
+                  • t(6;9)/<em>DEK::NUP214</em>；t(v;11q23.3)/<em>KMT2A</em> 重排（不含 PTD）<br>
+                  • t(9;22)/<em>BCR::ABL1</em>；t(8;16)/<em>KAT6A::CREBBP</em><br>
+                  • inv(3) 或 t(3;3)/<em>GATA2, MECOM(EVI1)</em>；t(3q26.2;v)<br>
+                  • -5 或 del(5q)；-7；-17 / abn(17p)<br>
+                  • 複雜核型（≥3 個不相關異常）；單體核型（Monosomal karyotype）<br>
+                  • 突變：<em>ASXL1, BCOR, EZH2, RUNX1, SF3B1, SRSF2, STAG2, U2AF1, ZRSR2</em><br>
+                  • 突變：<em>TP53</em>（VAF ≥10%，不論單/雙對偶基因）
+                </td>
+                <td>
+                  • 9 個 MDS 相關突變若合併低風險亞型，目前不列不良預後。<br>
+                  • <em>TP53</em> 突變常與複雜/單體核型共現，傳統化療預後極差。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-ven-risk">
+        <div class="callout callout-info">
+          ELN 2022 係基於高強度化療建立；針對不適合高強度化療而接受 <strong>HMA + Venetoclax</strong> 的患者，應採用下列分子獲益分層（Döhner et al., Blood 2024）：
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>HMA + Venetoclax 獲益分組</th><th>基因異常特徵</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="risk-fav">高獲益 (Higher benefit)</span></td><td><em>TP53, KRAS, NRAS, FLT3-ITD</em> <strong>皆為陰性</strong></td></tr>
+              <tr><td><span class="risk-int">中度獲益 (Intermediate benefit)</span></td><td>具 <em>KRAS</em> 及/或 <em>NRAS</em> 及/或 <em>FLT3-ITD</em> 突變，且 <strong><em>TP53</em> 陰性</strong></td></tr>
+              <tr><td><span class="risk-adv">低獲益 (Lower benefit)</span></td><td>具 <strong><em>TP53</em> 突變</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 四、高強度誘導與鞏固 -->
+    <section class="card" id="sec-intensive">
+      <div class="sec-header">
+        <h2>四、非 APL AML：適合高強度誘導治療</h2>
+        <div class="sec-tags"><span class="code-tag">AML-1</span><span class="code-tag">AML-2</span><span class="code-tag">AML-3</span><span class="code-tag">AML-6</span></div>
+      </div>
+      <div class="callout callout-info">
+        <strong>評估原則：</strong>以<strong>整體體能狀態（Fitness）與共病</strong>決定是否適合高強度誘導（≥60 歲建議做老年周全性評估），而非單以年齡 60 歲切分。
+      </div>
+
+      <h3>1. 誘導治療選擇 (AML-1, AML-2)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>疾病亞型 / 風險分組</th><th>首選 (Preferred)</th><th>其他建議 / 特定情況</th><th>重點備註</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CBF-AML</strong><br>(染色體低風險)</td>
+              <td>• <strong>7 + 3 (Dauno/Ida) + GO</strong> (CD33+)</td>
+              <td>• 7 + 3 (Dauno/Ida)<br>• FLAG-IDA + GO <span class="cat cat-2b">Cat 2B</span> (>60y 慎用)<br>• <em>特定</em>：FLAG + GO (不適合小紅莓) <span class="cat cat-2b">Cat 2B</span></td>
+              <td>合併 <em>FLT3-TKD</em> 優先選 <strong>GO</strong> 而非 FLT3 抑制劑；CD33 ≥1% 即可視為陽性。</td>
+            </tr>
+            <tr>
+              <td><strong>分子低風險 / 中風險</strong><br>(<em>NPM1 / CEBPA</em> 等)</td>
+              <td>• <strong>7 + 3 (Dauno/Ida)</strong> <span class="cat cat-1">Cat 1</span></td>
+              <td>• 7 + 3 + GO (CD33+，<em>NPM1</em> 特別可能獲益)<br>• FLAG-IDA ± GO <span class="cat cat-2b">Cat 2B</span><br>• CLAG-M <span class="cat cat-2b">Cat 2B</span> (>60y 慎用)</td>
+              <td><strong>Daunorubicin 60 mg/m² 優於 90 mg/m²</strong>（療效相當、毒性較低）。</td>
+            </tr>
+            <tr>
+              <td><strong><em>FLT3</em> 突變 AML</strong></td>
+              <td>• <strong>7 + 3 + Midostaurin</strong> (ITD/TKD) <span class="cat cat-1">Cat 1</span><br>• <strong>7 + 3 + Quizartinib</strong> (<strong>限 ITD</strong>) <span class="cat cat-1">Cat 1</span></td>
+              <td>—</td>
+              <td>61–70 歲體能佳者推論亦可從 Midostaurin 獲益。</td>
+            </tr>
+            <tr>
+              <td><strong>治療相關 AML (非 CBF) / 既往 MDS, CMML / AML-MR</strong></td>
+              <td>• <strong>CPX-351</strong> (<strong>≥60y 首選</strong>) <span class="cat cat-1">Cat 1</span><br>• <strong>7 + 3</strong> (<strong>&lt;60y 首選</strong>)</td>
+              <td>• CPX-351 (&lt;60y)；7 + 3 (≥60y)<br>• Decitabine (D1–5) / Azacitidine + Venetoclax<br>• CLIA + Ven / FLAG-IDA + Ven <span class="cat cat-2b">Cat 2B</span></td>
+              <td>先前大量暴露 HMA 者，CPX-351 與 7+3 獲益無異。<em>SRSF2/SF3B1/EZH2/U2AF1/ZRSR2/BCOR/STAG2/ASXL1</em> 突變用 CPX-351 最有益。</td>
+            </tr>
+            <tr>
+              <td><strong>高風險 (無 <em>TP53</em> / del(17p))</strong></td>
+              <td>• <strong>無首選，強烈建議臨床試驗</strong></td>
+              <td>• 7 + 3；HMA + Venetoclax<br>• CPX-351 / FLAG-IDA / CLAG-M / CLIA+Ven / FLAG-IDA+Ven <span class="cat cat-2b">Cat 2B</span></td>
+              <td>及早進行 HLA 配對與捐贈者搜尋。</td>
+            </tr>
+            <tr>
+              <td><strong>高風險 (有 <em>TP53</em> / del(17p))</strong></td>
+              <td>• <strong>強烈優先臨床試驗</strong></td>
+              <td>• 若無試驗，<strong>傾向低強度治療</strong>（如 HMA ± Ven）優於傳統高強度化療</td>
+              <td>傳統化療療效極差。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 誘導後追蹤與再誘導 (AML-3)</h3>
+      <div class="flow-grid">
+        <div class="flow-box">
+          <div class="step-title">📅 Day 14–21 骨髓評估</div>
+          若用高劑量 Ara-C (&gt;100–200 mg/m²) 可延至 D21。若狀態不明確，7 天內重抽骨髓確認。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">✅ 骨髓低下 (Hypoplasia)</div>
+          定義：Cellularity &lt;20% 且殘餘 blasts &lt;5%。等待血球恢復（最晚 <strong>Day 42</strong> 重做骨髓確認緩解）。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🔄 殘留病灶 → 再誘導</div>
+          HiDAC/IDAC、7+3、5+2、7+3 + Midostaurin/Quizartinib、<strong>HMA + Venetoclax</strong>、CPX-351（僅限誘導用過者）或 R/R 標靶/化療。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">❌ 原發性難治 (Primary Refractory)</div>
+          Allo-HCT（鼓勵先達緩解）、Ara-C ± 小紅莓（等捐贈者）、R/R 治療 (<code>AML-9</code>) 或最佳支持照護。
+        </div>
+      </div>
+
+      <h3>3. 鞏固治療 (AML-6)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>風險分組</th><th>鞏固治療選項</th><th>後續處置</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>低風險 (CBF / 分子低風險)</strong></td>
+              <td>• <strong>HiDAC / IDAC</strong> ± GO（限誘導用過 GO 之 CD33+）<br>• Cytarabine (5 或 7 天) ± 小紅莓（或 ≥60y Mitoxantrone）<br>• Cytarabine + 小紅莓 + GO（亦適用 <em>KIT</em> 突變）</td>
+              <td>維持治療 (<code>AML-7</code>) 或追蹤 (<code>AML-8</code>)；若無法完成鞏固、<strong>MRD 陽性</strong>或 <em>KIT</em> 突變考慮 <strong>Allo-HCT</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong><em>FLT3</em> 突變</strong></td>
+              <td>• <strong>Allo-HCT (<em>FLT3-ITD</em> 首選)</strong><br>• Cytarabine + Midostaurin (ITD/TKD) 或 Quizartinib (限 ITD)</td>
+              <td>Allo-HCT（未做者）、維持治療或追蹤。</td>
+            </tr>
+            <tr>
+              <td><strong>中風險</strong></td>
+              <td>• <strong>Cytarabine</strong>（1–2 g/m² 與 ≥2 g/m² 療效無異）± 小紅莓 + GO<br>• <strong>Allo-HCT</strong></td>
+              <td>同上。</td>
+            </tr>
+            <tr>
+              <td><strong>高風險 / 繼發性 / AML-MR</strong></td>
+              <td>• <strong>Allo-HCT (首選)</strong><br>• Cytarabine；CPX-351 / FLAG-IDA（限誘導用過者）；續用原 HMA + Ven</td>
+              <td>同上。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-warn">
+        <strong>⚠️ GO 與移植間隔：</strong>使用 Gemtuzumab ozogamicin (GO) 後短期內移植會增加<strong>肝竇阻塞症候群 (SOS)</strong> 風險，建議最後一劑 GO 與 Allo-HCT 間隔 <strong>60–90 天</strong>。
+      </div>
+    </section>
+
+    <!-- 五、低強度與 Venetoclax -->
+    <section class="card" id="sec-lower">
+      <div class="sec-header">
+        <h2>五、非 APL AML：低強度誘導與 Venetoclax 原則</h2>
+        <div class="sec-tags"><span class="code-tag">AML-4</span><span class="code-tag">AML-5</span><span class="code-tag">AML-J</span></div>
+      </div>
+
+      <h3>1. 不適合或拒絕高強度誘導之治療選擇 (AML-4)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>突變狀態</th><th>首選 (Preferred)</th><th>其他建議 (Other Recommended)</th><th>特定情況適用 (Useful)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>具 <em>IDH1</em> 突變</strong></td>
+              <td>• <strong>Azacitidine + Venetoclax</strong> <span class="cat cat-1">Cat 1</span><br>• <strong>Azacitidine + Ivosidenib</strong> <span class="cat cat-1">Cat 1</span><br>• <strong>Decitabine + Venetoclax</strong></td>
+              <td>• <strong>Ivosidenib</strong> 單藥<br>• <strong>Oral decitabine/cedazuridine + Venetoclax</strong> <span class="cat cat-new">v4.2026</span></td>
+              <td>• LDAC + Ven (曾用 HMA)<br>• HMA 單藥 (Ven 禁忌)<br>• <strong>Olutasidenib</strong> <span class="cat cat-2b">Cat 2B</span> (QTcF 延長不適用 Ivosidenib 者)</td>
+            </tr>
+            <tr>
+              <td><strong>無 <em>IDH1</em> 突變</strong></td>
+              <td>• <strong>Azacitidine + Venetoclax</strong> <span class="cat cat-1">Cat 1</span><br>• <strong>Decitabine + Venetoclax</strong></td>
+              <td>• <strong>Oral decitabine/cedazuridine + Venetoclax</strong> <span class="cat cat-new">v4.2026</span><br>• <strong>Cladribine + LDAC + Venetoclax</strong> <span class="cat cat-2b">Cat 2B</span></td>
+              <td>• LDAC + Ven；HMA 單藥；LDAC + Glasdegib；LDAC 單藥<br>• <strong>Gilteritinib ± Aza</strong> (<em>FLT3</em>)<br>• <strong>Enasidenib ± Aza</strong> (<em>IDH2</em>)<br>• <strong>GO 單藥</strong> (CD33+)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>誘導後追蹤 (AML-5)：</strong>達緩解者考慮 <strong>Allo-HCT</strong>（體能允許且有捐贈者應於 CR1 移植）或<strong>持續原低強度療程</strong>；無反應/惡化轉 R/R 治療或最佳支持照護。<em>註：IDH 抑制劑起效可能需 3–5 個月，須嚴密監測延遲發作的分化症候群。</em></p>
+
+      <h3>2. Venetoclax 合併 HMA / LDAC 實務操作原則 (AML-J)</h3>
+      <div class="callout callout-danger">
+        <strong>💊 TLS 與 CYP3A4 必守規則：</strong>
+        (1) 給藥前將 <strong>WBC 降至 &lt;25 × 10⁹/L</strong>（Hydroxyurea）；
+        (2) <strong>第一療程強烈建議住院完成爬坡</strong>（併 HMA: 100→200→400 mg D1–3；併 LDAC: 100→200→400→600 mg D1–4），每 6–8 小時追蹤生化至最大劑量後 24 小時；
+        (3) 併用<strong>強/中效 CYP3A4 抑制劑（如 Posaconazole, Voriconazole）須依仿單調降 Ven 劑量</strong>並會診藥師；避免強/中效誘導劑；
+        (4) <strong>嚴重共病患者</strong>可考慮一開始即縮短 Ven 天數（如 <strong>7 天</strong>）。
+      </div>
+
+      <div class="flow-grid">
+        <div class="flow-box">
+          <div class="step-title">1️⃣ Cycle 1 D21–28 骨髓檢查</div>
+          第一療程中即使血球低下仍繼續給藥並輸血支持，<strong>緩解評估前暫不用 G-CSF</strong>。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">2️⃣ 若達 CR (Blasts &lt;5% 且血球恢復)</div>
+          於 Day 29（或等報告出來後）直接開始 Cycle 2。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">3️⃣ 若達 MLFS / CRi (血球未恢復)</div>
+          <strong>暫停給藥最多 14 天</strong>待 ANC &gt;0.5、Plt &gt;50，<strong>鼓勵使用 G-CSF</strong>；Cycle 2 考慮縮短 Ven 至 <strong>21 天</strong>；Cycle 3+ 反覆血球低下可進一步縮短至 <strong>14 / 7 / 5 天</strong>。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">4️⃣ 若無反應 (Blasts ≥5%)</div>
+          未惡化則<strong>不延遲直接開始 Cycle 2</strong>，D21–28 再評估（多數反應在 2 療程內出現，最多觀察至 4 療程）。
+        </div>
+      </div>
+    </section>
+
+    <!-- 六、維持、追蹤與 R/R -->
+    <section class="card" id="sec-rr">
+      <div class="sec-header">
+        <h2>六、維持治療、追蹤監測與復發/難治型 (R/R) AML</h2>
+        <div class="sec-tags"><span class="code-tag">AML-7</span><span class="code-tag">AML-8</span><span class="code-tag">AML-9</span></div>
+      </div>
+
+      <h3>1. 維持治療 (AML-7)</h3>
+      <ul>
+        <li><strong>化療後（無計畫 Allo-HCT）</strong>：
+          <ul>
+            <li>非 CBF-AML 達緩解（未完成或僅完成部分鞏固）：<strong>Oral azacitidine</strong> 直至惡化或無法耐受（<strong>≥55 歲 <span class="cat cat-1">Cat 1</span></strong>；無法口服者可改注射 Aza/Dec 最多 12 療程）。<em>不可取代鞏固或 CR1 移植。</em></li>
+            <li><em>FLT3</em> 突變（先前用過 FLT3i）：<strong>Quizartinib</strong>（限 ITD，首選）或 <strong>Midostaurin</strong>（ITD/TKD）。</li>
+          </ul>
+        </li>
+        <li><strong>異體移植後（Post Allo-HCT，緩解期）</strong>：
+          <ul>
+            <li><em>FLT3</em> 突變：<strong>Gilteritinib</strong>（ITD/TKD；<strong>移植前 CR1 超高靈敏度 *FLT3-ITD* MRD 未轉陰者首選</strong>）、Sorafenib（限 ITD）、Midostaurin（ITD/TKD）、Quizartinib（限 ITD）。</li>
+            <li>高風險 AML 病史：<strong>Low-dose decitabine + G-CSF</strong> <span class="cat cat-2b">Cat 2B</span>。</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>2. 緩解後追蹤 (AML-8)</h3>
+      <ul>
+        <li><strong>CBC / Plt</strong>：前 2 年每 <strong>1–3 個月</strong>一次；第 3–5 年每 <strong>3–6 個月</strong>一次。</li>
+        <li><strong>骨髓檢查</strong>：不常規執行，僅於周邊血抹片異常或血球低下時進行。</li>
+        <li><strong>首次復發必做</strong>：立即重測<strong>分子與染色體基因</strong>（<em>FLT3, IDH1/2, KMT2A, NPM1</em> 等偵測殖株演變）並啟動捐贈者搜尋。</li>
+      </ul>
+
+      <h3>3. 復發/難治型 (R/R) AML 治療 (AML-9)</h3>
+      <div class="callout callout-ok">
+        <strong>首選策略：</strong>強烈優先推薦<strong>臨床試驗</strong>。達二次緩解 (CR2) 後進行 <strong>Allo-HCT</strong> 是唯一具潛在治癒性的選擇。
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>類別</th><th>標靶 / 對象</th><th>建議藥物 / 方案</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>標靶治療</strong></td><td><strong><em>FLT3-ITD</em></strong></td><td><strong>Gilteritinib</strong> <span class="cat cat-1">Cat 1</span>；HMA + Sorafenib；Quizartinib <span class="cat cat-2b">Cat 2B</span></td></tr>
+            <tr><td><strong>標靶治療</strong></td><td><strong><em>FLT3-TKD</em></strong></td><td><strong>Gilteritinib</strong> <span class="cat cat-1">Cat 1</span></td></tr>
+            <tr><td><strong>標靶治療</strong></td><td><strong><em>IDH1</em> / <em>IDH2</em></strong></td><td>IDH1：<strong>Ivosidenib</strong>、<strong>Olutasidenib</strong> ｜ IDH2：<strong>Enasidenib</strong></td></tr>
+            <tr><td><strong>標靶治療</strong></td><td><strong>CD33 陽性</strong></td><td><strong>Gemtuzumab ozogamicin (GO)</strong></td></tr>
+            <tr><td><strong>標靶治療</strong></td><td><strong><em>KMT2A</em> 重排</strong></td><td><strong>Revumenib</strong>（口服 Menin 抑制劑）</td></tr>
+            <tr><td><strong>標靶治療</strong></td><td><strong><em>NPM1</em> 突變</strong></td><td><strong>Revumenib</strong>、<strong>Ziftomenib</strong> <span class="cat cat-new">v3.2026</span>（口服 Menin 抑制劑）</td></tr>
+            <tr><td><strong>高強度化療</strong></td><td>體能佳、CR1 短者</td><td>CLAG ± (Mito/Ida)；Cytarabine ± (Dauno/Ida/Mito)；FLAG ± Ida ± Ven；Etoposide + Ara-C ± Mito；Clofarabine ± Ara-C ± Ida；CLIA + Ven <span class="cat cat-2b">Cat 2B</span></td></tr>
+            <tr><td><strong>低強度療法</strong></td><td>不適合高強度者</td><td>HMA (Aza/Dec)；LDAC <span class="cat cat-2b">Cat 2B</span>；<strong>(HMA 或 LDAC) + Venetoclax</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 七、劑量速查表 -->
+    <section class="card" id="sec-dosing">
+      <div class="sec-header">
+        <h2>七、常用系統性治療劑量速查表</h2>
+        <div class="sec-tags"><span class="code-tag">AML-E 1–10</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>階段</th><th>方案名稱</th><th>標準劑量與給藥時程</th><th>關鍵注意事項</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>高強度誘導</td><td><strong>7 + 3</strong></td><td>Cytarabine 100–200 mg/m² CI × 7d + Dauno <strong>60 mg/m²</strong> (優於 90) 或 Ida 12 mg/m² × 3d</td><td>+GO：3 mg/m² (上限 4.5 mg) D1/2/3/4 單劑或 D1,4,7</td></tr>
+            <tr><td>高強度誘導</td><td><strong>7 + 3 + Midostaurin</strong></td><td>7 + 3 + Midostaurin 50 mg PO q12h, <strong>D8–21</strong></td><td><em>FLT3-ITD</em> 或 <em>TKD</em></td></tr>
+            <tr><td>高強度誘導</td><td><strong>7 + 3 + Quizartinib</strong></td><td>7 + 3 + Quizartinib 35.4 mg PO QD, <strong>D8–21</strong></td><td>僅限 <em>FLT3-ITD</em></td></tr>
+            <tr><td>高強度誘導</td><td><strong>CPX-351</strong></td><td>Cytarabine 100 mg/m² + Dauno 44 mg/m² IV, <strong>D1, 3, 5</strong> × 1 cycle</td><td>再誘導 D1,3；鞏固 65/29 mg/m² D1,3 × 1–2 cycles</td></tr>
+            <tr><td>低強度誘導</td><td><strong>Aza / Dec + Ven</strong></td><td>Aza 75 mg/m² D1–7 或 Dec 20 mg/m² D1–5 + Ven PO QD (100/200/400 mg)</td><td>每 28 天；CYP3A4i 須調降 Ven</td></tr>
+            <tr><td>低強度誘導</td><td><strong>Oral Dec/Ced + Ven</strong></td><td>Dec 35 mg / Ced 100 mg PO QD <strong>D1–5</strong> + Ven (100/200/400 mg)</td><td>全口服方案（≥75 歲或共病）</td></tr>
+            <tr><td>低強度誘導</td><td><strong>Aza + Ivosidenib</strong></td><td>Aza 75 mg/m² D1–7 (或 D1–5,8,9) + Ivosidenib 500 mg PO QD D1–28</td><td><em>IDH1</em> 突變；監測 QTc &amp; 分化症候群</td></tr>
+            <tr><td>鞏固治療</td><td><strong>HiDAC / IDAC</strong></td><td>HiDAC: 1.5–3 g/m² q12h (3h) D1,3,5 或 D1,2,3 × 3–4c<br>IDAC: 1–1.5 g/m² q12h × 4–6 劑 × 1–2c</td><td>≥60 歲或腎不全用 ≥2 g/m² 防小腦毒性</td></tr>
+            <tr><td>維持治療</td><td><strong>Oral Azacitidine</strong></td><td>300 mg PO QD, <strong>D1–14</strong> / 每 28 天</td><td>直至惡化或無法耐受</td></tr>
+            <tr><td>維持 / R/R</td><td><strong>Gilteritinib</strong></td><td>120 mg PO QD, D1–28（維持最多 26 cycles）</td><td><em>FLT3-ITD</em> 或 <em>TKD</em></td></tr>
+            <tr><td>維持 / R/R</td><td><strong>Quizartinib</strong></td><td>26.5 mg PO QD D1–14（QTcF ≤450 ms 時 D15 升至 <strong>53 mg QD</strong>）</td><td>維持最多 36c；曾 QTcF &gt;500 ms 維持 26.5 mg</td></tr>
+            <tr><td>R/R 標靶</td><td><strong>IDH 抑制劑</strong></td><td>Enasidenib (IDH2): 100 mg QD ｜ Ivosidenib (IDH1): 500 mg QD ｜ Olutasidenib (IDH1): 150 mg BID</td><td>D1–28 連續服用；注意分化症候群</td></tr>
+            <tr><td>R/R 標靶</td><td><strong>Revumenib</strong></td><td><strong>160 mg PO BID</strong>（併強效 CYP3A4i）或 <strong>270 mg PO BID</strong>（無併用），D1–28</td><td><em>KMT2A</em> 或 <em>NPM1</em>；&lt;40 kg 依體重；防 QTcF &amp; DS</td></tr>
+            <tr><td>R/R 標靶</td><td><strong>Ziftomenib</strong></td><td><strong>600 mg PO QD</strong>, D1–28</td><td><em>NPM1</em> 突變；注意分化症候群</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 八、療效定義與 MRD -->
+    <section class="card" id="sec-mrd">
+      <div class="sec-header">
+        <h2>八、療效評估標準與 MRD 監測</h2>
+        <div class="sec-tags"><span class="code-tag">AML-I</span><span class="code-tag">AML-H</span></div>
+      </div>
+
+      <h3>1. 療效定義速查 (AML-I)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>評估等級</th><th>骨髓 Blasts</th><th>周邊血球與其他條件</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>MLFS</strong></td><td>&lt;5% (計數 ≥200 顆，含 spicules)</td><td>無 Auer rods、無髓外病灶（不要求血球恢復）</td></tr>
+            <tr><td><strong>Morphologic CR</strong></td><td>&lt;5%</td><td><strong>ANC ≥1.0 × 10⁹/L</strong> 且 <strong>Plt ≥100 × 10⁹/L</strong></td></tr>
+            <tr><td><strong>CR<sub>MRD-</sub></strong></td><td>達 CR</td><td>RT-PCR 或多色流式細胞儀 (MFC) 陰性</td></tr>
+            <tr><td><strong>CRh</strong></td><td>&lt;5%</td><td>無病灶證據，且 <strong>ANC ≥0.5 × 10⁹/L</strong> 及 <strong>Plt ≥50 × 10⁹/L</strong></td></tr>
+            <tr><td><strong>CRi</strong></td><td>&lt;5%</td><td>不依賴輸血，但仍有 ANC &lt;1.0 <strong>或</strong> Plt &lt;100</td></tr>
+            <tr><td><strong>PR</strong></td><td>下降 ≥50% 至 5%–25%</td><td>符合 CR 的血球標準</td></tr>
+            <tr><td><strong>Relapse / Primary Refractory / MRD Relapse</strong></td><td colspan="2">• <strong>復發</strong>：周邊血再見芽細胞、骨髓 Blasts ≥5% 或髓外復發。<br>• <strong>原發性難治</strong>：至少 2 個高強度誘導療程後仍未達 CR/CRh/CRi。<br>• <strong>MRD 復發</strong>：不論方法，MRD 由陰轉陽。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. MRD 檢測原則與陽性處置 (AML-H)</h3>
+      <ul>
+        <li><strong>檢體與排除基因</strong>：初次必取骨髓抽吸<strong>第一管專用檢體</strong>（BM 轉陰後 <em>PML::RARA, NPM1, CBFB::MYH11, RUNX1::RUNX1T1</em> 可用周邊血追蹤）。CHIP/老化相關突變（<strong><em>DNMT3A, TET2</em>, 潛在 <em>ASXL1</em></strong>）<strong>不可</strong>當作 MRD 指標。</li>
+        <li><strong>靈敏度要求</strong>：MFC（不同於正常 + LAIPs）<strong>≤10⁻³</strong>；RQ-PCR（<em>PML::RARA, NPM1, CBF</em>）<strong>≤10⁻⁴</strong>；<em>FLT3-ITD</em> 深度定序 NGS <strong>≤10⁻⁵</strong>（一般 20–50 基因常規 NGS Panel 靈敏度不足，不建議）。</li>
+        <li><strong>追蹤時機</strong>：達形態學緩解時、Allo-HCT 前/後；<em>NPM1 / CBF</em> 於 2 療程後起每 <strong>6–12 週追蹤 24 個月</strong>；Venetoclax 低強度方案可能於 4–6 療程後才轉陰（<em>NPM1</em> 每 6–12 週 RQ-PCR）。</li>
+        <li><strong>MRD 陽性處置</strong>：無血液學復發時於 <strong>1 個月內重測</strong>並做骨髓確認 → 陽性屬高復發風險，考慮 Allo-HCT、臨床試驗、標靶或 Venetoclax 低強度清除。<strong>強烈建議：</strong>移植前/後骨髓 <strong><em>FLT3-ITD</em> MRD ≥10⁻⁶</strong> 者給予 <strong>Gilteritinib 移植後維持治療</strong>（MORPHO 試驗）。</li>
+      </ul>
+    </section>
+
+    <!-- 九、APL -->
+    <section class="card" id="sec-apl">
+      <div class="sec-header">
+        <h2>九、急性前骨髓細胞白血病 (APL)</h2>
+        <div class="sec-tags"><span class="code-tag">APL-1~6</span><span class="code-tag">APL-A/B</span></div>
+      </div>
+
+      <div class="callout callout-danger">
+        <strong>🚨 APL 四大鐵則：</strong>
+        (1) 疑似即立刻給 <strong>ATRA</strong>；(2) 誘導與鞏固必採<strong>同一試驗方案不可混搭</strong>；(3) t-APL 與原發性治法相同，<strong>不建議用 FLT3 抑制劑</strong>；(4) <strong>切勿於 D7–14 抽骨髓</strong>（易誤判過度治療），分子緩解應於<strong>鞏固結束後</strong>評估。
+      </div>
+
+      <h3>1. 風險分層與一線誘導/鞏固 (APL-1 ~ APL-4, APL-B)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>風險分組</th><th>定義</th><th>首選方案 (Preferred)</th><th>備選 / 心臟問題調整</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="risk-fav">低風險</span></td>
+              <td><strong>WBC ≤10 × 10⁹/L</strong></td>
+              <td>• <strong>ATRA (45 mg/m²/d 分 2 次) + 每日 ATO (0.15 mg/kg IV)</strong> <span class="cat cat-1">Cat 1</span><br>• <strong>ATRA + 間歇 ATO (0.3 → 0.25 mg/kg BIW)</strong> <span class="cat cat-1">Cat 1</span></td>
+              <td>無法用 ATO：AIDA (ATRA+Ida) <span class="cat cat-1">Cat 1</span> 或 ATRA + 單劑 GO (6/9 mg/m² D5)。D28 血球恢復即進鞏固。</td>
+            </tr>
+            <tr>
+              <td><span class="risk-adv">高風險</span><br>(無心臟問題)</td>
+              <td><strong>WBC &gt;10 × 10⁹/L</strong></td>
+              <td>• <strong>ATRA + Idarubicin + ATO</strong> (APML4)<br>• <strong>ATRA + 每日/間歇 ATO + 單劑 GO (6/9 mg/m² D1–4)</strong></td>
+              <td>無法用 ATO：ATRA + Dauno (3 或 4d) + Ara-C 或 AIDA。<strong>D28 必做骨髓</strong>，鞏固前考慮 <strong>LP + IT 預防</strong>。</td>
+            </tr>
+            <tr>
+              <td><span class="risk-adv">高風險</span><br>(有心臟問題)</td>
+              <td><strong>Low EF</strong> 或<br><strong>Prolonged QTcF</strong></td>
+              <td>• <strong>Low EF</strong>：ATRA + ATO + GO (避開小紅莓)<br>• <strong>Prolonged QTcF</strong>：ATRA + GO / ATRA + Dauno + Ara-C / AIDA (避開 ATO)</td>
+              <td>同高風險評估（D28 BM + 考慮 LP）。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 鞏固後監測與復發治療 (APL-5, APL-6)</h3>
+      <ul>
+        <li><strong>分子監測</strong>：鞏固結束後測周邊血 RT-PCR；高風險或鞏固中斷過久者每 3 個月追蹤 2 年（低風險達分子緩解者復發極低）。PCR 轉陽須於 <strong>2–4 週內</strong>於同一實驗室複測確認。</li>
+        <li><strong>復發治療</strong>：ATRA+ATO 後早期復發 (&lt;6 mo) → 改小紅莓方案或 GO；未用過 ATO 或小紅莓後早期復發 → ATO ± ATRA ± GO；ATO 後晚期復發 (≥6 mo) → ATO ± ATRA ± (小紅莓或 GO)。達 CR2 考慮 <strong>IT CNS 預防</strong>：骨髓 <strong>PCR 陰性</strong>優先<strong>自體移植 (Auto-HCT)</strong>；<strong>PCR 陽性</strong>或未緩解考慮<strong>異體移植 (Allo-HCT)</strong>。</li>
+      </ul>
+
+      <h3>3. APL 支持性照護關鍵 (APL-A)</h3>
+      <div class="flow-grid">
+        <div class="flow-box">
+          <div class="step-title">🩸 凝血異常 (DIC)</div>
+          維持 <strong>Plt ≥50 × 10⁹/L</strong>、<strong>Fibrinogen &gt;150 mg/dL</strong>（Cryo/FFP）、PT/PTT 接近正常；每日監測。<strong>避免</strong>隧道導管/Port-A 及常規白血球分離術。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🫁 分化症候群 (DS)</div>
+          <strong>預防</strong>（高風險或 ATRA+ATO）：D1 起 Prednisone 0.5 mg/kg/d 或 Dexa 10 mg q12h。<br>
+          <strong>治療</strong>：一出現呼吸徵象立即改 <strong>Dexamethasone 10 mg q12h</strong>（3–5 天後 2 週內漸減），缺氧考慮暫停 ATRA。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">⚡ ATO 心臟與腎臟安全</div>
+          每週測 ECG（<strong>QTcF &gt;500 ms</strong> 須矯正電解質慎用）與電解質（<strong>K、Mg 維持正常中上限</strong>）。肥胖者 ATO 可考慮<strong>每日上限 15 mg</strong> 防 AKI。
+        </div>
+        <div class="flow-box">
+          <div class="step-title">🚫 其他禁忌與預防</div>
+          誘導期<strong>禁用 G-CSF</strong>；療程中可考慮 VZV 抗病毒預防。
+        </div>
+      </div>
+    </section>
+
+    <!-- 十、BPDCN -->
+    <section class="card" id="sec-bpdcn">
+      <div class="sec-header">
+        <h2>十、母細胞性漿細胞樣樹突細胞腫瘤 (BPDCN)</h2>
+        <div class="sec-tags"><span class="code-tag">BPDCN-1~4</span><span class="code-tag">BPDCN-A~C</span><span class="code-tag">v5.2026 更新</span></div>
+      </div>
+
+      <ul>
+        <li><strong>確診免疫分型 (BPDCN-1)</strong>：(1) <strong>CD4 及/或 CD56 陽性 + CD123 陽性 + 任一其他 pDC 標記</strong> (TCF4, TCL1, CD303, CD304)；或 (2) 任三項 pDC 標記陽性且預期陰性標記 (CD3, CD14, CD19, CD34, lysozyme, MPO) 皆陰性。</li>
+        <li><strong>強制 CNS 評估與預防 (BPDCN-B)</strong>：因復發時 CNS 侵犯高達 30%，<strong>所有病人</strong>初診、復發或疑似時皆需做 <strong>LP + IT 化療</strong>。無病灶者預防性 IT 每月 2 次至少 8 劑；有病灶者每週 2 次至 CSF 轉陰，接續每週 1 次至少 4 劑、再每月 2 次至總計至少 8 劑。</li>
+        <li><strong>一線誘導治療 (BPDCN-2, 3)</strong>：
+          <ul>
+            <li><strong>CD123 標靶</strong>：
+              <ul>
+                <li><strong>Tagraxofusp-erzs</strong>：12 mcg/kg IV D1–5 / q21d（納入條件：<strong>Albumin ≥3.2 g/dL</strong>、LVEF 正常、Cr ≤1.5、Bil ≤1.5、AST/ALT ≤2.5×ULN、無顯著心血管病）。</li>
+                <li><strong>Pivekimab sunirine-pvzy</strong> <span class="cat cat-new">v5.2026 NEW</span>：0.045 mg/kg IV D1 / q21d（排除：CNS 侵犯、SOS 史、Grade 4 CLS 或非心因性 Grade 4 水腫）。</li>
+              </ul>
+            </li>
+            <li><strong>化療</strong>：高強度（<strong>HyperCVAD</strong>、7+3、CHOP）或低強度（<strong>HMA + Venetoclax</strong>）；安寧選項（類固醇 + 支持照護）。</li>
+          </ul>
+        </li>
+        <li><strong>CR 後鞏固與復發</strong>：達 CR <strong>首選 Allo-HCT</strong>（CR1 移植顯著延長 OS）；復發優先臨床試驗，或 Pivekimab、Tagraxofusp（未用過）、化療、局部放療、HMA+Ven。</li>
+      </ul>
+
+      <div class="callout callout-danger">
+        <strong>🚨 Tagraxofusp 致命毒性 — 毛細血管滲漏症候群 (CLS, BPDCN-C)：</strong>
+        第一療程必住院觀察至結束後 ≥24 小時；每次輸注前須給 H1/H2 阻斷劑 + Acetaminophen + 類固醇。凡出現 <strong>Albumin &lt;3.5 或下降 ≥0.5</strong>、體重日增 ≥1.5 kg、水腫/低血壓、AST/ALT &gt;5×ULN、Cr &gt;1.8 或 CrCl ≤60、SBP ≥160/≤80、HR ≥130/≤40、發燒 ≥38°C 或過敏反應，<strong>立即暫停給藥</strong>並積極補白蛋白與類固醇。
+      </div>
+    </section>
+
+    <!-- 十一、支持性照護與特殊族群 -->
+    <section class="card" id="sec-support">
+      <div class="sec-header">
+        <h2>十一、支持性照護、CNS 白血病與特殊族群</h2>
+        <div class="sec-tags"><span class="code-tag">AML-B</span><span class="code-tag">AML-C</span><span class="code-tag">AML-D</span><span class="code-tag">AML-F</span><span class="code-tag">AML-G</span></div>
+      </div>
+
+      <h3>1. 中樞神經白血病 (AML-B) 與放療原則 (AML-C)</h3>
+      <ul>
+        <li><strong>初診有神經症狀</strong>：先做 CT/MRI 排除出血或佔位效應 → 無佔位做 LP（周邊血有芽細胞時同步給 1 劑 IT）；CSF 陽性給 IT 每週 2 次至清除再每週 1 次共 4–6 週。有佔位/腦壓升高 → FNA/切片，陽性採 <strong>RT 接續 IT</strong> 或 <strong>Ara-C ≥2 g/m² + Dexamethasone</strong>（⚠️ <strong>切勿將腦部 RT 與 Ara-C ≥2 g/m² 或 IT MTX 同步給予</strong>）。</li>
+        <li><strong>無症狀 CR1 篩檢性 LP 高風險對象</strong>：初診 <strong>WBC &gt;40 × 10⁹/L</strong>、髓外病灶、高風險 APL、初診腦實質出血、<em>FLT3</em> 突變、<em>MLLT3::KMT2A</em>、單核球分化或 MPAL。</li>
+        <li><strong>孤立髓外病灶 (Myeloid sarcoma / Leukemia cutis)</strong>：仍須以<strong>全身系統治療</strong>為主，RT/手術僅用於殘餘或症狀性病灶。</li>
+      </ul>
+
+      <h3>2. 一般支持性照護 (AML-F) 與監測 (AML-G)</h3>
+      <ul>
+        <li><strong>輸血原則</strong>：一律用<strong>減白血品</strong>；閾值 <strong>Hb ≤7–8 g/dL</strong>（或有症狀）、<strong>Plt &lt;10,000/mcL</strong>（或任何出血）。</li>
+        <li><strong>TLS 預防</strong>：水化利尿 + Allopurinol 或 <strong>Rasburicase</strong>（芽細胞急升、高尿酸或腎損優先；用前盡可能測 <strong>G6PD 缺乏症</strong>，缺乏者禁用防溶血）。</li>
+        <li><strong>HiDAC (≥2 g/m² 或 &gt;60y 用 1–1.5 g/m²) 毒性防護</strong>：每次給藥前必測<strong>小腦徵象</strong>（眼震、口齒不清、指鼻不準）；Cr 因 TLS 急升須暫停；<strong>一旦發生小腦毒性須永久停用且未來不可再挑戰 ≥2 g/m²</strong>。雙眼給予<strong>類固醇眼藥水 QID 至最後一劑後 24 小時</strong>。</li>
+        <li><strong>抗感染與生長因子</strong>：抗黴菌預防以 <strong>Posaconazole</strong> 實證最強；緩解後用 G-CSF/GM-CSF 須於<strong>抽骨髓評估緩解前停用至少 7 天</strong>。</li>
+        <li><strong>高強度治療監測 (AML-G)</strong>：誘導期每日 CBC/Plt 及生化/電解質/尿酸/磷，凝血每週 1–2 次（DIC 每日含 Fibrinogen）；緩解後化療期每週 2 次 CBC、每日生化，門診恢復期每週 2–3 次 CBC/電解質。</li>
+      </ul>
+
+      <h3>3. 拒絕輸血患者之照護原則（如耶和華見證人，AML-D）</h3>
+      <ul>
+        <li>誠實溝通目前無完全不需血品支持之標準 AML 療法，確認對冷凍沉澱品/幹細胞的接受度，必要時聯繫醫院聯絡委員會（HLC）或轉介無血自體移植中心。</li>
+        <li><strong>減低失血與出血</strong>：兒科微量採血管、經期用停經藥（OCP/Medroxyprogesterone）、PPI + 積極止吐 + 軟便劑、生理食鹽水鼻噴劑、防跌倒；凝血異常考慮 Vit K；Plt &lt;30×10⁹/L 或出血考慮 <strong>Tranexamic acid / Aminocaproic acid</strong>（口腔出血可漱口）；缺乏時補鐵/葉酸/B12；充分討論後考慮 ESA、G-CSF、TPO 模擬劑；嚴重貧血臥床給氧。</li>
+        <li><strong>治療調整</strong>：積極測基因並優先採<strong>標靶治療</strong>或較低骨髓抑制之非高強度療程（如 HMA + Venetoclax）。</li>
+      </ul>
+    </section>
+
+    <footer>
+      本網頁僅供臨床學習與快速查閱參考，實際醫療決策請依病人個別狀況並參照官方最新完整版 NCCN Guidelines® (Version 5.2026)。
+    </footer>
+  </main>
+
+  <button class="top-btn" id="topBtn">↑ 頂部</button>
+
+  <script>
+    // Dark / Light Theme
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('aml-theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.textContent = '☀️ 淺色';
+    }
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('aml-theme', 'light');
+        themeBtn.textContent = '🌙 深色';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('aml-theme', 'dark');
+        themeBtn.textContent = '☀️ 淺色';
+      }
+    });
+
+    // Mobile Sidebar
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+    menuBtn.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open'); });
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('section');
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        parent.querySelector('#' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Active Nav Highlight on Scroll
+    const sections = document.querySelectorAll('section.card');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 110) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Instant Search & Highlight
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const searchCount = document.getElementById('searchCount');
+    const contentRoot = document.getElementById('contentRoot');
+
+    function clearHighlights() {
+      contentRoot.querySelectorAll('mark.hl').forEach(m => {
+        const parent = m.parentNode;
+        parent.replaceChild(document.createTextNode(m.textContent), m);
+        parent.normalize();
+      });
+    }
+
+    function performSearch() {
+      const q = searchInput.value.trim();
+      clearHighlights();
+      searchClear.style.display = q ? 'block' : 'none';
+      if (!q) {
+        sections.forEach(s => s.style.display = '');
+        searchCount.textContent = '';
+        return;
+      }
+      const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      let totalMatches = 0;
+      let firstMark = null;
+
+      sections.forEach(sec => {
+        // Show all tab panels during search so nothing is missed
+        sec.querySelectorAll('.tab-panel').forEach(p => p.classList.add('active'));
+        let secMatches = 0;
+        const walker = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, {
+          acceptNode: node => {
+            if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            const tag = node.parentNode.tagName;
+            if (tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
+            return regex.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+          }
+        });
+        const nodes = [];
+        let n;
+        while ((n = walker.nextNode())) nodes.push(n);
+        nodes.forEach(textNode => {
+          const frag = document.createDocumentFragment();
+          let lastIdx = 0;
+          const str = textNode.nodeValue;
+          regex.lastIndex = 0;
+          let m;
+          while ((m = regex.exec(str)) !== null) {
+            if (m.index > lastIdx) frag.appendChild(document.createTextNode(str.slice(lastIdx, m.index)));
+            const mark = document.createElement('mark');
+            mark.className = 'hl';
+            mark.textContent = m[0];
+            frag.appendChild(mark);
+            if (!firstMark) firstMark = mark;
+            secMatches++;
+            totalMatches++;
+            lastIdx = m.index + m[0].length;
+          }
+          if (lastIdx < str.length) frag.appendChild(document.createTextNode(str.slice(lastIdx)));
+          textNode.parentNode.replaceChild(frag, textNode);
+        });
+        sec.style.display = secMatches > 0 ? '' : 'none';
+      });
+
+      searchCount.textContent = totalMatches > 0 ? `${totalMatches} 筆符合` : '無符合結果';
+      if (firstMark) firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    let debounce;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(performSearch, 200);
+    });
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      performSearch();
+      searchInput.focus();
+    });
+  </script>
+</body>
+</html>
