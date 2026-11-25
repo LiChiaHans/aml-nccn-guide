@@ -114,6 +114,21 @@
       padding: 2px 8px;
       border-radius: 999px;
     }
+    .portal-link {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: all .15s;
+    }
+    .portal-link:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
     .search-wrap {
       flex: 1;
       max-width: 460px;
@@ -491,6 +506,7 @@
       <span>🩸 AML 臨床速查手冊</span>
       <span class="ver">NCCN v5.2026</span>
     </div>
+    <a class="portal-link" href="https://lichiahans.github.io/hematology-portal/">← 血液科入口網</a>
     <div class="search-wrap">
       <input type="text" id="searchInput" class="search-input" placeholder="搜尋基因、藥物、療程或頁碼 (如 FLT3, Venetoclax, APL)..." />
       <button class="search-clear" id="searchClear" title="清除搜尋">✕</button>
