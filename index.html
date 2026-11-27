@@ -129,6 +129,19 @@
       border-color: var(--primary);
       background: var(--primary-light);
     }
+    .who-top-link {
+      font-size: 12.5px;
+      color: var(--primary);
+      text-decoration: none;
+      border: 1px solid var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: all .15s;
+      font-weight: 600;
+    }
+    .who-top-link:hover { opacity: 0.88; }
     .search-wrap {
       flex: 1;
       max-width: 460px;
@@ -507,6 +520,7 @@
       <span class="ver">NCCN v5.2026</span>
     </div>
     <a class="portal-link" href="https://lichiahans.github.io/hematology-portal/">← 血液科入口網</a>
+    <a class="who-top-link" href="https://lichiahans.github.io/who5-hematolymphoid-guide/#ch2-aml" target="_blank" rel="noopener" title="開啟 WHO 第 5 版 AML 分類與診斷標準">🌳 WHO 5th AML</a>
     <div class="search-wrap">
       <input type="text" id="searchInput" class="search-input" placeholder="搜尋基因、藥物、療程或頁碼 (如 FLT3, Venetoclax, APL)..." />
       <button class="search-clear" id="searchClear" title="清除搜尋">✕</button>
